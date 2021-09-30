@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="./scripts/upload_script.js"></script>
+		<title>Stuttering Detector App</title>
+	</head>
+
+	<body>
+		<h1>Stuttering Detector</h1>
+		<nav>
+			<a href="record.html">Record Audio</a>
+			<a href="upload.html">Upload File</a>
+		</nav>         
+		<input type="file" id="file_select" onchange="fileSelect();"> Select File </input>
+
+		<button id="upload_file" onClick="fileUpload();"> Upload File </button>
+		<button id="run_model" onClick="runModel();"> Run Model </button>
+	</body>
+
+</html>
