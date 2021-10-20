@@ -69,11 +69,6 @@ function runModel(){
     category = formData.get("category");
     file_name = formData.get("audio_name");
 
-//	pyshell.run('engine.py',  function  (err, results)  {
-//        console.log("INSIDE123")
-//	 if  (err)  console.log(err);
-//	});
-
     data = {
         "file_name": file_name,
         "file_path": file_path,
@@ -92,25 +87,33 @@ function runModel(){
 
 		fetchRes.then(res => 
                 res.json()).then(d => {
-			console.log("d")
-			console.log(d)
-		})
 
-//	var process = child('python',["./my.py",file_name,category]);
-	
-	//We listen for 'data' event.
-//	process.stdout.on('data', function (data) {
-//	  console.log("Sum " + JSON.parse(data.toString()).sum);    
-//	});
-   // sock = zmq.socket("push");
-   // sock.bindSync("tcp://127.0.0.1:4242");
+                output = d.output
 
-   // setInterval(function() {
-   //     sock.send(["model", file_name, category]);
-   //     //        if(error || res !== 'model done') {
-   //     //            console.error(error)
-   //     //        } else {
-   //     //            console.log("model done")
-   //     //        }
-   // }, 500)
+            var cnt = 0;
+            var curr = 0;
+            for (var i = 0; i < output.length; i++) {
+                if (output[i] == 1) {
+                    curr++;
+                }   
+                else {
+                    curr = 0;
+                }   
+                if (curr == 28) {
+                    cnt++;
+                }   
+            }   
+            if (cnt > 2) {
+                document.getElementById("result").innerHTML = "Stuttered";
+//                this.setState({ stuttered: "Stuttered" }); 
+            }   
+            else {
+                document.getElementById("result").innerHTML = "Not Stuttered";
+//                this.setState({ stuttered: "Not Stuttered" }); 
+            }   
+//            this.setState({ checked: true }); 
+            document.getElementById("result").style.display = "block";
+            console.log("cnt");
+            console.log(cnt);
+        })
 }
