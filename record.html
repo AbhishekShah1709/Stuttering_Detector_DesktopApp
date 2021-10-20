@@ -4,8 +4,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="scripts/require.js"></script>
-        <script src="scripts/record_script.js"></script>
 		<title>Stuttering Detector App</title>
 	</head>
 
@@ -16,10 +14,11 @@
 			<a href="upload.html">Upload File</a>
 		</nav>        
         
-        <button id="record" onClick="startRecording()">Start Recording</button>
-        <button id="stopRecord" onClick="endRecording()" disabled>End Recording</button>
+        <button id="record">Start Recording</button>
+        <button id="stopRecord" disabled>End Recording</button>
         <audio id="recordedAudio"></audio>
 
 	</body>
 
+    <script src="bundle2.js"></script>
 </html>

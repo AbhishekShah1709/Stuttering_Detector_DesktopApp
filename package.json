@@ -5,7 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify upload_script.js -o bundle.js",
+    "build2": "browserify record_script.js -o bundle2.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,13 @@
     "electron": "14.0.1"
   },
   "dependencies": {
-    "zeromq": "5.2.8"
+    "axios": "0.23.0",
+    "bindings": "1.5.0",
+    "ffmpeg": "0.0.4",
+    "libsodium": "0.7.9",
+    "nan": "2.15.0",
+    "node-gyp-build": "4.3.0",
+    "python-shell": "3.0.1",
+    "zq": "0.0.0"
   }
 }
