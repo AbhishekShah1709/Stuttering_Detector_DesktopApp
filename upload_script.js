@@ -7,9 +7,9 @@ console.log("hii start")
 
 function checkmp3(filename) {
 	var parts = filename.name.toString().split('.');
-
-	if (parts[parts.length - 1] != 'mp3') {
-		alert("Please Give a Valid mp3 file");
+    console.log(parts[parts.length-1])
+	if ((parts[parts.length - 1] != 'mp3') && (parts[parts.length - 1] != 'wav')) {
+		alert("Please Give a Valid mp3 or wav file");
 		console.log("FALSE")
 			return false;
 	}   
