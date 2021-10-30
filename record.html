@@ -4,19 +4,27 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
 		<title>Stuttering Detector App</title>
 	</head>
 
 	<body>
+        <div class="heading">
+            <h1 class="center">STUTTERING</h1>
+            <h1 class="center">DISORDER</h1>
+            <h1 class="center">DETECTOR</h1>
+        </div>
+
+        <div class="main_frame">
 		<h1>Stuttering Detector</h1>
 		<nav>
-			<a href="record.html">Record Audio</a>
-			<a href="upload.html">Upload File</a>
+			<a href="index.html">HOME</a>
 		</nav>        
         
-        <button id="record">Start Recording</button>
-        <button id="stopRecord" disabled>End Recording</button>
+        <button id="record" class="circle">Start Recording</button>
+        <button id="stopRecord" class="circle" disabled>End Recording</button>
         <audio id="recordedAudio"></audio>
+        </div>
 
 	</body>
 

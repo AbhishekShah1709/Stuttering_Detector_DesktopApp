@@ -23,6 +23,12 @@ function checkmp3(filename) {
 var select_button = document.getElementById('file_select'); // add id="my-button" into html
 select_button.addEventListener('change', fileSelect);
 
+var upload_button = document.getElementById('upload_file'); // add id="my-button" into html
+upload_button.addEventListener('click', fileUpload);
+
+var model_button = document.getElementById('run_model'); // add id="my-button" into html
+model_button.addEventListener('click', runModel);
+
 function fileSelect(){
 	const fileInput = document.getElementById("file_select");
 
@@ -30,10 +36,9 @@ function fileSelect(){
 	console.log(filename)
 
     checkmp3(filename)
+    upload_button.disabled = false;
 }
 
-var upload_button = document.getElementById('upload_file'); // add id="my-button" into html
-upload_button.addEventListener('click', fileUpload);
 
 function fileUpload(){
 
@@ -58,10 +63,9 @@ function fileUpload(){
     for (var value of formData.values()) {
         console.log(value);
     } 
+    model_button.disabled = false;
 }
 
-var model_button = document.getElementById('run_model'); // add id="my-button" into html
-model_button.addEventListener('click', runModel);
 
 function runModel(){
 
