@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="upload.css">
+        <title>Stuttering Detector App</title>
+    </head>
+
+    <body>
+        <div class="heading">
+            <h1 class="center">STUTTERING</h1>
+            <h1 class="center">DISORDER</h1>
+            <h1 class="center">DETECTOR</h1>
+        </div>
+
+        <div class="main_frame">
+            <nav>
+            <a href="index.html">HOME</a>
+            </nav>
+            <input type="file" id="file_select" class="circle"> Select File </input>
+
+            <button id="upload_file" class="circle" disabled> Upload File </button>
+            <button id="run_model" class="circle" disabled> Run Model </button>
+            <p id="result"> </p>
+        </div>
+    </body>
+
+    <script src="bundle.js"></script>
+</html>

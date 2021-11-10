@@ -20,7 +20,7 @@ code {
     right: 0px;
     position: absolute;
     display: table;
-    background-color: #5e42a6 ;
+    background-color: lightgrey ;
     width: 70%;
     height: 100%;
     font-size: 180%;
@@ -36,10 +36,16 @@ code {
     position: absolute;
     display: table;
     font-family: fantasy;
-    background-color: #312450;
+    background-color: grey;
 }
 
 .center {
+    margin: auto;
+    text-align: center;
+    color: teal;
+    line-height:100px;
+}
+.centre {
     margin: auto;
     text-align: center;
     color: white;
@@ -57,7 +63,7 @@ code {
     width: 20%;
     height: 15%; 
     color: white;
-    background: #312450;
+    background: darkslategray;
     display:inline-block;
     margin-right: 10%;
     margin-top: 10%;

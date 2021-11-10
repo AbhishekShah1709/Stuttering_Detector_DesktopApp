@@ -1915,76 +1915,54 @@ const formData = new FormData();
 
     // Update the formData object
     formData.append("blob_details", audio);
-    formData.append("category", "recorded");
 
 
     // Request made to the backend api
     // Send formData object
-    let url = 'http://localhost:5000/';
+    let url = 'http://localhost:5000/record';
 
     console.log(audio)
     console.log(formData)
     axios.post(url, formData, {
       headers: {
-        'content-type': 'multipart/form-data'
+        'content-type': `multipart/form-data; boundary=${formData._boundary}`,
       }
     })
+//      .then(res => res.json()).then(d => {
       .then(res => {
-		console.log(res.data)
+            console.log("res") 
+            console.log(res) 
+          output = res.data.output
+
+            var cnt = 0;
+            var curr = 0;
+            for (var i = 0; i < output.length; i++) {
+                if (output[i] == 1) {
+                    curr++;
+                }   
+                else {
+                    curr = 0;
+                }   
+                if (curr == 28) {
+                    cnt++;
+                }   
+            }   
+            if (cnt > 2) {
+                document.getElementById("result").innerHTML = "Stuttered";
+//                this.setState({ stuttered: "Stuttered" }); 
+            }   
+            else {
+                document.getElementById("result").innerHTML = "Not Stuttered";
+//                this.setState({ stuttered: "Not Stuttered" }); 
+            }   
+//            this.setState({ checked: true }); 
+            document.getElementById("result").style.display = "block";
+            console.log("cnt");
+            console.log(cnt);
+     
       })
       .catch(err => console.log(err))
 
-//
-//    console.log(audio)
-//    console.log(typeof audio)
-//
-//    data = {
-//        "blob": audio,
-//        "category": "recorded"
-//    }
-//    console.log(typeof data)
-//
-//    let options = {
-//      method: 'POST',
-//      headers: {
-//        'Content-Type': 'application/json;charset=utf-8'
-////        'Content-Type': 'multipart/form-data',        
-//      },
-//      body: audio
-////      body: formData
-//    }
-//
-//    console.log(options)
-//    let fetchRes = fetch("http://127.0.0.1:5000/", options)
-//
-//		fetchRes.then(res => 
-//                res.json()).then(d => {
-//			console.log("d")
-//			console.log(d)
-//		})
-
-//    metadata = {path: "./"}
-//    var file = new File([audio], "./here.mp3", metadata);
-//    
-//    console.log(file)
-//    console.log(audio)
-//    var ffmpeg = require('ffmpeg');
-////    try{
-//        var process = new ffmpeg('./now');
-//        process.then(function(audio){
-//
-//            audio.fnExtractSoundToMP3('./audios/final', function (error, file) {
-//                if(!error)
-//                    console.log('Audio File: ' + file);
-//            });
-//        }, function(err){
-//            console.log('Error: ' + err);
-//        });
-//    }
-//    catch(e){
-//        console.log(e.code);
-//        console.log(e.msg);
-//    }
 }
 
 var start_button = document.getElementById('record');
@@ -1996,7 +1974,9 @@ function startRecording(){
     var stopRecord = document.getElementById("stopRecord");
     console.log('I was clicked')
     record.disabled = true;
+    record.classList.add("disabled");
     stopRecord.disabled=false;
+    
     audioChunks = [];
     rec.start();
 }

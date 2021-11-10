@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="index.css">
-		<title>Stuttering Detector App</title>
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="record.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-	<body>
-        <div class="heading">
-            <h1 class="center">STUTTERING</h1>
-            <h1 class="center">DISORDER</h1>
-            <h1 class="center">DETECTOR</h1>
-        </div>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        <div class="main_frame">
-		<h1>Stuttering Detector</h1>
-		<nav>
-			<a href="index.html">HOME</a>
-		</nav>        
-        
-        <button id="record" class="circle">Start Recording</button>
-        <button id="stopRecord" class="circle" disabled>End Recording</button>
-        <audio id="recordedAudio"></audio>
-        </div>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Stuttering Detector App</title>
+</head>
 
-	</body>
+<body>
+    <div class="heading">
+        <h1 class="center">STUTTERING</h1>
+        <h1 class="center">DISORDER</h1>
+        <h1 class="center">DETECTOR</h1>
+    </div>
 
-    <script src="bundle2.js"></script>
+    <div class="main_frame">
+        <h1>Stuttering Detector</h1>
+        <nav class="navbar">
+            <a href="index.html" class="btn nav-btn">HOME</a>
+        </nav>
+        <form>
+            <div id="inputDiv" class="form-group">
+                <button type="button" id="record" class="btn-primary">Start Recording</button>
+                <button type="button" id="stopRecord" class="btn-primary" disabled>End Recording</button>
+            </div>
+            <audio id="recordedAudio"></audio>
+            <p id="result"> </p>
+        </form>
+    </div>
+
+</body>
+
+<script src="bundle2.js"></script>
+
 </html>

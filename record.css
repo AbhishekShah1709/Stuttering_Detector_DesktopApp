@@ -56,25 +56,19 @@ code {
     margin-top: 10%;
 }
 
-#upload_file:disabled
-{
-    background-color: slategray;
-    border-color: slategray;
-}
-
-#run_model:disabled{
-    background-color: slategray;
-    border-color: slategray;
-}
-
-#upload_file:enabled
-{
+#record:enabled{
     background-color: darkslategray;
     border-color: darkslategray;
 }
-
-#run_model:enabled
-{
+#record:disabled{
+    background-color: slategray;
+    border-color: slategray;
+}
+#stopRecord:enabled{
     background-color: darkslategray;
     border-color: darkslategray;
+}
+#stopRecord:disabled{
+    background-color: slategray;
+    border-color: slategray;
 }

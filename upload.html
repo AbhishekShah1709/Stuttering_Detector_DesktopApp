@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="upload.css">
-        <title>Stuttering Detector App</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="upload.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    <body>
-        <div class="heading">
-            <h1 class="center">STUTTERING</h1>
-            <h1 class="center">DISORDER</h1>
-            <h1 class="center">DETECTOR</h1>
-        </div>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        <div class="main_frame">
-            <nav>
-            <a href="index.html">HOME</a>
-            </nav>
-            <input type="file" id="file_select" class="circle"> Select File </input>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Stuttering Detector App</title>
+</head>
 
-            <button id="upload_file" class="circle" disabled> Upload File </button>
-            <button id="run_model" class="circle" disabled> Run Model </button>
+<body>
+    <div class="heading">
+        <h1 class="center">STUTTERING</h1>
+        <h1 class="center">DISORDER</h1>
+        <h1 class="center">DETECTOR</h1>
+    </div>
+
+    <div class="main_frame">
+        <nav class="navbar">
+            <a href="index.html" class="btn nav-btn">HOME</a>
+        </nav>
+        <!-- <div class="mb-3"> -->
+        <form>
+            <div id="inputDiv" class="form-group form-inline inputDiv">
+                <label for="file_select" class="form-label">Select a file:</label>
+                <input type="file" name="file_select" id="file_select" class="form-control" />
+            </div>
+            <div id="inputDiv" class="form-group">
+                <button type="button" id="upload_file" class="btn-primary" disabled> Upload File </button>
+                <button type="button" id="run_model" class="btn-primary" disabled> Run Model </button>
+            </div>
             <p id="result"> </p>
-        </div>
-    </body>
+        </form>
+    </div>
+</body>
 
-    <script src="bundle.js"></script>
+<script src="bundle.js"></script>
+
 </html>

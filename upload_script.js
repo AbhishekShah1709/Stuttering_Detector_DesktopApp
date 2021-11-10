@@ -1,22 +1,17 @@
 console.log("hii start")
-//const zmq = require("../../../../../usr/local/lib/node_modules/zeromq/");
-//var child = require("child_process").spawn;
-//var process = child('python',["./my.py",file_name,category]);
-//var process = child('python',["./my.py",7,4]);
-//var pyshell =  require('python-shell');
 
 function checkmp3(filename) {
-	var parts = filename.name.toString().split('.');
+    var parts = filename.name.toString().split('.');
     console.log(parts[parts.length-1])
-	if ((parts[parts.length - 1] != 'mp3') && (parts[parts.length - 1] != 'wav')) {
-		alert("Please Give a Valid mp3 or wav file");
-		console.log("FALSE")
-			return false;
-	}   
-	else {
-		console.log("TRUE")
-			return true;
-	}   
+        if ((parts[parts.length - 1] != 'mp3') && (parts[parts.length - 1] != 'wav')) {
+            alert("Please Give a Valid mp3 or wav file");
+            console.log("FALSE")
+                return false;
+        }   
+        else {
+            console.log("TRUE")
+                return true;
+        }   
 }
 
 
@@ -45,19 +40,10 @@ function fileUpload(){
     uploaded_file = document.getElementById("file_select");
     uploaded_file = uploaded_file.files[0];
     uploaded_file_name = uploaded_file.name;
-//    uploaded_file._name = uploaded_file_name.replaceAll(" ", "_");
-
-    //	const FormData = require('form-data')
-    // import File System API
-
-    //	const fs = require('fs')
-    // create new FormData object
-
+    
     formData = new FormData();
-//    formData.append("audio_file", uploaded_file, uploaded_file._name);
     formData.append("audio_path", uploaded_file.path);
     formData.append("audio_name", uploaded_file_name);
-    formData.append("category", "uploaded");
 
     console.log("NOW")
     for (var value of formData.values()) {
@@ -70,13 +56,11 @@ function fileUpload(){
 function runModel(){
 
     file_path = formData.get("audio_path");
-    category = formData.get("category");
     file_name = formData.get("audio_name");
 
     data = {
         "file_name": file_name,
-        "file_path": file_path,
-        "category": category
+        "file_path": file_path
     }
 
     let options = {
@@ -87,7 +71,7 @@ function runModel(){
       body: JSON.stringify(data)
     }
 
-    let fetchRes = fetch("http://127.0.0.1:5000/", options)
+    let fetchRes = fetch("http://127.0.0.1:5000/upload", options)
 
 		fetchRes.then(res => 
                 res.json()).then(d => {
