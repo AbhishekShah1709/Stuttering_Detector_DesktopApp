@@ -20,7 +20,9 @@ code {
     right: 0px;
     position: absolute;
     display: table;
-    background-color: lightgrey ;
+/*    background-color: lightgrey ;*/
+/*    background-color: #5e42a6 ; */
+    background-color: #488a99; 
     width: 70%;
     height: 100%;
     font-size: 180%;
@@ -36,15 +38,18 @@ code {
     position: absolute;
     display: table;
     font-family: fantasy;
-    background-color: grey;
+/*    background-color: grey;*/
+/*    background-color: #312450; */
+    background-color: #1f3f49; 
 }
 
 .center {
     margin: auto;
     text-align: center;
-    color: teal;
+    color: white;
     line-height:100px;
 }
+
 .centre {
     margin: auto;
     text-align: center;
@@ -63,7 +68,9 @@ code {
     width: 20%;
     height: 15%; 
     color: white;
-    background: darkslategray;
+/*    background: darkslategray; */
+/*    background: #312450; */
+    background-color: #1f3f49; 
     display:inline-block;
     margin-right: 10%;
     margin-top: 10%;

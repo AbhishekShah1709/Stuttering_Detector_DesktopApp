@@ -16,11 +16,22 @@ code {
     monospace;
 }
 
+a:link {
+    font-size: 150%;
+    color: #1f3f49; 
+}
+
+a:hover {
+    font-size: 150%;
+    text-decoration: underline;
+}
+
 .main_frame {
     right: 0px;
     position: absolute;
     display: table;
-    background-color: lightgrey ;
+    /*background-color: lightgrey ;*/
+    background-color: #488a99; 
     width: 70%;
     height: 100%;
     font-size: 180%;
@@ -35,7 +46,8 @@ code {
     position: absolute;
     display: table;
     font-family: fantasy;
-    background-color: grey;
+/*    background-color: grey;*/
+    background-color: #1f3f49; 
 }
 
 .center {
@@ -57,7 +69,8 @@ code {
 }
 
 #record:enabled{
-    background-color: darkslategray;
+    /*background-color: darkslategray;*/
+    background-color: #1f3f49; 
     border-color: darkslategray;
 }
 #record:disabled{
@@ -65,10 +78,27 @@ code {
     border-color: slategray;
 }
 #stopRecord:enabled{
-    background-color: darkslategray;
+    /*background-color: darkslategray;*/
+    background-color: #1f3f49; 
     border-color: darkslategray;
 }
 #stopRecord:disabled{
     background-color: slategray;
     border-color: slategray;
+}
+
+#recordedAudio{
+    margin: auto;
+    margin-top: 10%;
+    margin-left: 35%;
+    text-align: center;
+}
+
+#result{
+    margin: auto;
+    margin-top: 10%;
+    text-align: center;
+    font-size: 150%;
+    color: white; 
+    font-family: fantasy;
 }

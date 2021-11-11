@@ -93,11 +93,11 @@ function runModel(){
                 }   
             }   
             if (cnt > 2) {
-                document.getElementById("result").innerHTML = "Stuttered";
+                document.getElementById("result").innerHTML = "The given input audio is STUTTERED";
 //                this.setState({ stuttered: "Stuttered" }); 
             }   
             else {
-                document.getElementById("result").innerHTML = "Not Stuttered";
+                document.getElementById("result").innerHTML = "The given input audio is NOT STUTTERED";
 //                this.setState({ stuttered: "Not Stuttered" }); 
             }   
 //            this.setState({ checked: true }); 
