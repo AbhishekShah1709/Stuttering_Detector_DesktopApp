@@ -16,14 +16,42 @@ code {
     monospace;
 }
 
-a:link {
-    font-size: 150%;
-    color: #1f3f49; 
+.sec_frame a:link {
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50%;
+    color: white;
+    height: 80px;
+    width: 80px;
+    background-color: #1f3f49; 
+    display:inline-block;
+    font-size: 120%;
+    padding-top: 17%;
 }
 
-a:hover {
-    font-size: 150%;
-    text-decoration: underline;
+.sec_frame a:hover {
+    font-weight: bold;
+    border-radius: 50%;
+    color: #488a99;
+    height: 80px;
+    width: 80px;
+    background-color: #1f3f49; 
+    display:inline-block;
+    font-size: 120%;
+    padding-top: 17%;
+}
+
+.sec_frame {
+    left: 30%;
+    display: table;
+    position: absolute;
+    /*background-color: lightgrey ;*/
+    background-color: #488a99; 
+    width: 10%;
+    height: 100%;
+    font-size: 180%;
+    padding-top: 25%;
+    padding-left: 2%;
 }
 
 .main_frame {
@@ -32,11 +60,12 @@ a:hover {
     display: table;
     /*background-color: lightgrey ;*/
     background-color: #488a99; 
-    width: 70%;
+    width: 60%;
     height: 100%;
     font-size: 180%;
     padding-top: 12%;
 }
+
 .heading {
     padding-top: 18%;
     padding-right: 0%;
