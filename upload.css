@@ -79,11 +79,18 @@ code {
     background-color: #1f3f49; 
 }
 
-.center {
+.centre {
     margin: auto;
     text-align: center;
     color: white;
     line-height:100px;
+}
+
+.centre img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 .parent {

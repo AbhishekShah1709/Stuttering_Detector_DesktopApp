@@ -19,28 +19,36 @@ app = Flask(__name__)
 
 @app.route("/upload", methods = ['POST'])
 def model():
+    f = open('./temp.txt', 'a')
+    f.write("start1")
+    f.close()
+
+    print("IN UPLOAD")
     body = request.data
-    print("body")
-    print(type(body))
-    print(body)
 
     content = json.loads(body.decode('utf-8'))
-    print(content)
     file_path = content['file_path']
     file_name = content['file_name']
-
     
     sound = AudioSegment.from_mp3(file_path)
-    wav_file_path="./media/my_audios_wav/" + file_name.split('.')[0] + ".wav" ### Path of audio file
+    wav_file_path="./recorded_audios/converted/" + file_name.split('.')[0] + ".wav" ### Path of audio file
     sound.export(wav_file_path, format="wav")
     newAudio = AudioSegment.from_wav(wav_file_path)
 
+    f = open('./temp.txt', 'a')
+    f.write("start2")
+    f.close()
+    
     (rate,sig) = wavy.read(wav_file_path)
     mfcc_feat = mfcc(sig,rate,numcep=15,nfilt=40,preemph=0.97)
     mfcc_d = delta(mfcc_feat,1)
     mfcc_dd = delta(mfcc_d,1)
     feat = np.concatenate((mfcc_feat,mfcc_d,mfcc_dd),axis=1)
     final_feats=[]
+    
+    f = open('./temp.txt', 'a')
+    f.write("start3")
+    f.close()
     
     for i in range(3,len(feat)-3):
         args = (feat[i-3],feat[i-2],feat[i-1],feat[i],feat[i+1],feat[i+2],feat[i+3])
@@ -50,7 +58,19 @@ def model():
     
     final_feats = np.array(final_feats)
 
+    f = open('./temp.txt', 'a')
+    f.write("start4")
+    f.close()
+    
+    print("BEFORE BTP SAV")
+#    sys.path.append("../../")
     model = pickle.load(open('./BTP_FP.sav', 'rb'))
+    print("AFTER BTP SAV")
+    
+    f = open('./temp.txt', 'a')
+    f.write("start5")
+    f.close()
+    
     yhat_classes = model.predict(final_feats)
     a=0
     kt=0
@@ -86,23 +106,25 @@ def model():
     #dct = {'features': final_feats, 'output': yhat_classes}
     dct = {'output': json_yhat}
     json_obj = json.dumps(dct)
-    return json_obj
 
+    os.remove("./recorded_audios/converted/" + file_name.split('.')[0] + ".wav")    
+
+    return json_obj
 
 
 @app.route("/record", methods = ['POST'])
 def model2():
+    print("IN RECORD")
     body = request.files['blob_details']
-    print(body)
     
     file_name = str(uuid.uuid4())
-    path = "../audios/" + file_name
+    path = "./recorded_audios/received/" + file_name
     with open(path, 'wb') as f:
         f.write(request.files['blob_details'].read())
 
     sound = AudioSegment.from_file(path)
-    sound.export("../media/my_audios_wav/" + file_name + ".wav", format="wav")
-    wav="../media/my_audios_wav/" + file_name + ".wav" ### Path of audio file
+    sound.export("./recorded_audios/converted/" + file_name + ".wav", format="wav")
+    wav="./recorded_audios/converted/" + file_name + ".wav" ### Path of audio file
 
     (rate,sig) = wavy.read(wav)
     mfcc_feat = mfcc(sig,rate,numcep=15,nfilt=40,preemph=0.97)
@@ -119,7 +141,13 @@ def model2():
     
     final_feats = np.array(final_feats)
 
+    f = open('./temp.txt', 'a')
+    f.write("start6")
+    f.close()
+    
+    print("BEFORE BTP SAV")
     model = pickle.load(open('./BTP_FP.sav', 'rb'))
+    print("AFTER BTP SAV")
     yhat_classes = model.predict(final_feats)
     a=0
     kt=0
@@ -151,10 +179,14 @@ def model2():
     print(type(yhat_classes))
     json_yhat = yhat_classes.tolist()
     print(type(json_yhat))
-
+    
     #dct = {'features': final_feats, 'output': yhat_classes}
     dct = {'output': json_yhat}
     json_obj = json.dumps(dct)
+    
+    os.remove("./recorded_audios/received/" + file_name)
+    os.remove("./recorded_audios/converted/" + file_name + ".wav")
+    
     return json_obj
 
 #if __name__ == "__main__":

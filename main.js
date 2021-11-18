@@ -3,10 +3,10 @@ const path = require("path");
 
 //const PY_DIST_FOLDER = 'stuttering_model'
 //const PY_DIST_FOLDER = 'pymodel'
-const PY_DIST_FOLDER = 'wow2'
-const PY_FOLDER = 'pymodel'
+const PY_DIST_FOLDER = 'pymodels'
+const PY_FOLDER = 'python_scripts'
 //const PY_MODULE = 'model' // without .py suffix
-const PY_MODULE = 'engine' // without .py suffix
+const PY_MODULE = 'model' // without .py suffix
 
 let pyProc = null
 let pyPort = null
@@ -39,8 +39,9 @@ const createPyProc = () => {
       console.log("I AM HERE!");
     pyProc = require('child_process').execFile(script, [port])
   } else {
+      console.log("I AM HERE2!");
 //    pyProc = require('child_process').spawn('python', [script, port])
-    pyProc = require('child_process').spawn('python', ['pymodel/model.py', port])
+    pyProc = require('child_process').spawn('python', ['python_scripts/model.py', port])
   }
  
   if (pyProc != null) {
