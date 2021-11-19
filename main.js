@@ -3,7 +3,7 @@ const path = require("path");
 
 //const PY_DIST_FOLDER = 'stuttering_model'
 //const PY_DIST_FOLDER = 'pymodel'
-const PY_DIST_FOLDER = 'pymodels'
+const PY_DIST_FOLDER = 'pymodel'
 const PY_FOLDER = 'python_scripts'
 //const PY_MODULE = 'model' // without .py suffix
 const PY_MODULE = 'model' // without .py suffix

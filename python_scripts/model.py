@@ -59,12 +59,12 @@ def model():
     final_feats = np.array(final_feats)
 
     f = open('./temp.txt', 'a')
-    f.write("start4")
+    f.write(os.getcwd())
     f.close()
     
     print("BEFORE BTP SAV")
 #    sys.path.append("../../")
-    model = pickle.load(open('./BTP_FP.sav', 'rb'))
+    model = pickle.load(open('/home/abhishek/iiit/SEM 7/BTP-Flask/BTP_FP.sav', 'rb'))
     print("AFTER BTP SAV")
     
     f = open('./temp.txt', 'a')
@@ -97,7 +97,7 @@ def model():
                 yhat_classes[i]=1
     
     print(yhat_classes) ### yhat_classes is an array of 1 and 0, in which 1 represents detected filled pause at that frame and 0 represents normal speech
-    ###For ersion of yhat_classes to time array, each frame is of .01 seconds. And total no. of frames equal to total no. of elements in yhat_classes
+    ###For version of yhat_classes to time array, each frame is of .01 seconds. And total no. of frames equal to total no. of elements in yhat_classes
 
     print(type(yhat_classes))
     json_yhat = yhat_classes.tolist()
@@ -146,7 +146,13 @@ def model2():
     f.close()
     
     print("BEFORE BTP SAV")
-    model = pickle.load(open('./BTP_FP.sav', 'rb'))
+    try:
+        model = pickle.load(open('./BTP_FP.sav', 'rb'))
+    except Exception as e:
+        f = open('./temp.txt', 'a')
+        f.write("\n"+ e)
+        f.close()
+    
     print("AFTER BTP SAV")
     yhat_classes = model.predict(final_feats)
     a=0
@@ -174,7 +180,7 @@ def model2():
                 yhat_classes[i]=1
     
     print(yhat_classes) ### yhat_classes is an array of 1 and 0, in which 1 represents detected filled pause at that frame and 0 represents normal speech
-    ###For ersion of yhat_classes to time array, each frame is of .01 seconds. And total no. of frames equal to total no. of elements in yhat_classes
+    ###For version of yhat_classes to time array, each frame is of .01 seconds. And total no. of frames equal to total no. of elements in yhat_classes
 
     print(type(yhat_classes))
     json_yhat = yhat_classes.tolist()
