@@ -7,8 +7,16 @@
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "browserify upload_script.js -o bundle.js",
-    "build2": "browserify record_script.js -o bundle2.js"
+    "build2": "browserify record_script.js -o bundle2.js",
+    "package-linux": "electron-packager . stuttering-app --overwrite --platform=linux --arch=x64 --prune=true",
+    "package-mac": "electron-packager . stuttering-app --overwrite --platform=darwin --arch=x64 --prune=true"
   },
+  "ignore": [
+            "\\.git(ignore|config)",
+            "/(model)\\.spec",
+            "/bin$",
+            "/build$"
+          ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,12 +25,6 @@
   },
   "dependencies": {
     "axios": "0.23.0",
-    "bindings": "1.5.0",
-    "ffmpeg": "0.0.4",
-    "libsodium": "0.7.9",
-    "nan": "2.15.0",
-    "node-gyp-build": "4.3.0",
-    "python-shell": "3.0.1",
-    "zq": "0.0.0"
+    "electron-packager": "15.4.0"
   }
 }
